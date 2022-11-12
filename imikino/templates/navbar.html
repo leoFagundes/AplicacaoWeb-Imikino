@@ -1,0 +1,89 @@
+<nav class="navbar navbar-expand-lg bg-dark" style="margin-top: -1.3rem;">
+  <div class="container-fluid container">
+    <a class="navbar-brand"  href="{{ url_for('home') }}"><img src="../static/images/Titulo.png" class="ImagemLogo" alt="Imagem responsiva"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse pt-4" id="navbarSupportedContent">
+      {% if request.path == url_for('home') %}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" style="color: #ffffff; font-size: 1.2rem;" aria-current="page" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link opacity-50" style="color: #ffffff; font-size: 1.2rem;" href="{{ url_for('usuarios') }}">Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link opacity-50" style="color: #ffffff; font-size: 1.2rem;" href="{{ url_for('jogos') }}">Jogos</a>
+        </li>
+      </ul>
+      {% elif request.path == url_for('usuarios') %}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link opacity-50" style="color: #ffffff; font-size: 1.2rem;" aria-current="page" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" style="color: #ffffff; font-size: 1.2rem;" href="{{ url_for('usuarios') }}">Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link opacity-50" style="color: #ffffff; font-size: 1.2rem;" href="{{ url_for('jogos') }}">Jogos</a>
+        </li>
+      </ul>
+      {% elif request.path == url_for('jogos') %}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link opacity-50" style="color: #ffffff; font-size: 1.2rem;" aria-current="page" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link opacity-50" style="color: #ffffff; font-size: 1.2rem;" href="{{ url_for('usuarios') }}">Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" style="color: #ffffff; font-size: 1.2rem;" href="{{ url_for('jogos') }}">Jogos</a>
+        </li>
+      </ul>
+      {% else %}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link opacity-50" style="color: #ffffff; font-size: 1.2rem;" aria-current="page" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link opacity-50" style="color: #ffffff; font-size: 1.2rem;" href="{{ url_for('usuarios') }}">Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link opacity-50" style="color: #ffffff; font-size: 1.2rem;" href="{{ url_for('jogos') }}">Jogos</a>
+        </li>
+      </ul>
+      {% endif %}
+      {% if current_user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #ffffff; font-size: 1.2rem; margin-top: -1.2rem;">
+            <img class="imagem-perfil-pequena" src="{{ foto_perfil }}" alt="imagemperfil">
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('perfil') }}">Meu Perfil</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('sair') }}">Sair</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="{{ url_for('sobre') }}">Sobre</a></li>
+          </ul>
+        </li>
+      {% else %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #ffffff; font-size: 1.2rem; margin-top: -1.2rem;">
+            Menu
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('login') }}">Login</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('criarConta') }}">Criar Conta</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="{{ url_for('sobre') }}">Sobre</a></li>
+          </ul>
+        </li>
+      {% endif %}
+    </div>
+  </div>
+</nav>

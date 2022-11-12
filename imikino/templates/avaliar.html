@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="div-main-usuarios container">
+        <div class="div-sub-main-jogos">
+            <a class="d-flex justify-content-lg-start m-2" href="/jogos#{{jogo.nome}}"><img class="return" src="../static/images/seta.png"></a>
+            <div class="d-flex justify-content-center">
+                <div class="contorno">
+                    <img class="imagem-perfil-jogo" src="../static/images/imgFaixa/{{ jogo.foto_jogo }}">
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-2">
+                <h4 class="mb-0 mt-0" style="color: white;">{{ jogo.nome }}</h4> 
+            </div>
+            {% if '0' in media[0] %}
+                <div class="d-flex justify-content-center mt-2">
+                    <h5 class="mb-0 mt-0" style="color: white;"> <span style="color: yellow;">{{ '★' }}</span>: {{ media }}</h5> 
+                </div>
+            {% elif '1' in media[0] %}
+                <div class="d-flex justify-content-center mt-2">
+                    <h5 class="mb-0 mt-0" style="color: white;"> <span style="color: yellow;">{{ '★' }}</span>: {{ media }}</h5> 
+                </div>
+            {% elif '2' in media[0] %}
+                <div class="d-flex justify-content-center mt-2">
+                    <h5 class="mb-0 mt-0" style="color: white;"> <span style="color: yellow;">{{ '★'*2 }}</span>: {{ media }}</h5> 
+                </div>
+            {% elif '3' in media[0] %}
+                <div class="d-flex justify-content-center mt-2">
+                    <h5 class="mb-0 mt-0" style="color: white;"> <span style="color: yellow;">{{ '★'*3 }}</span>: {{ media }}</h5> 
+                </div>
+            {% elif '4' in media[0] %}
+                <div class="d-flex justify-content-center mt-2">
+                    <h5 class="mb-0 mt-0" style="color: white;"> <span style="color: yellow;">{{ '★'*4 }}</span>: {{ media }}</h5> 
+                </div>
+            {% elif '5' in media[0] %}
+                <div class="d-flex justify-content-center mt-2">
+                    <h5 class="mb-0 mt-0" style="color: white;"> <span style="color: yellow;">{{ '★'*5 }}</span>: {{ media }}</h5> 
+                </div>
+            {% endif %}
+            <div class="d-flex justify-content-center mt-2">
+                <span class="mb-0 mt-0" style="color: white;">{{ jogo.lancamento }} - {{ jogo.desenvolvedor }}</span>
+            </div>
+            <div class="d-flex justify-content-center mt-2">
+                <span class="mb-0 mt-0" style="color: white;">Gênero - {{ jogo.genero }}</span>
+            </div>
+            <hr style="color: white;">
+            <div class="d-flex align-items-center me-4 container" style="text-align: center; height: 96px;">
+                <span class="rating" style="color: white;">{{ jogo.descricao }}</span>
+            </div>
+            <form method="POST" action='' enctype="multipart/form-data">
+                {{ form.csrf_token }}
+                <fieldset class="d-flex justify-content-around container w-50 mt-3">
+                    {{ form.avaliacao(class='form-select w-auto') }}
+                    {{ form.botao_submit_avaliar(class='btn btn-primary') }}
+                </fieldset>
+            </form>
+        </div>
+    </div>
+{% endblock %}

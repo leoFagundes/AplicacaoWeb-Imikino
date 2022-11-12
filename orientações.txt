@@ -1,0 +1,75 @@
+'''
+Passo a passo de comandos para o terminal Python:
+
+#como criar e consultar o banco de dados
+
+from imikino import database
+from imikino.models import Usuario, Jogos, Avaliacao
+
+database.create_all()
+
+#comandos para mexer no banco de dados:
+#criar usuário
+usuario = Usuario(username='Leo', email='leo@gmail.com', senha='123123')
+usuario2 = Usuario(username='Lucas', email='lucas@gmail.com', senha='123123')
+
+#registrar o usuário dentro do banco de dados (add and commit)
+database.session.add(usuario)
+database.session.add(usuario2)
+database.session.commit()
+
+#visualizar os usuários (query serve para consultar o banco de dados | pegar uma informação de lá)
+Usuario.query.all() -> vai me dar todas as informações da tabela Usuario
+Usuario.query.first() -> vai me dar o primeiro cara do meu banco de dados
+
+usuario_teste = Usuario.query.first() -> armazenando o primeiro cara em uma variável
+usuario_teste.email
+usuario_teste.username
+usuario_teste.id
+usuario_teste.foto_perfil
+
+usuario_lucas = Usuario.query.filter_by(email='lucas@gmail.com') #filtrar por email
+usuario_lucas = Usuario.query.filter_by(email='lucas@gmail.com').first() #mas tem que pegar o primeiro pra pegar o primeiro item da lista
+usuario_lucas
+usuario_lucas.email...
+
+#deletar o bd
+database.drop_all()
+#recriar
+database.create_all()
+
+#Agora o BD vai estar vazio
+
+---------------------------
+#filtrar
+usuario2 = Usuario.query.filter_by(username='leozin2').first()
+usuario2.senha -> b'$2b$12$Sjt1VqGrBW34pRJfzFaC4uSrCFbKtGL6Mc7PVIucHT.k0Xw1Nr/jy' #a senha está criptografada
+
+---------------------------
+#Ativando o ambiente virtual
+#criar o arquivo
+python -m venv venv 
+
+#ativar o ambiente virtual
+.\venv\Scripts\Activate.ps1
+
+-----------------
+
+Para dar commit no heroku:
+git add .
+git commit -m 'comentario'
+git push heroku HEAD:master
+
+PIPS USADOS:
+
+* pip install Flask -> Framework de python para criação de sites
+* pip install flask-wtf -> Para criação de formulários com FlaskForm
+* pip install email_validator -> Para validar e-mails no falsk-wtf
+* pip install sqlalchemy -> É o banco de dados
+* pip install flask-sqlalchemy
+* pip install flask-bcrypt -> Para criptografar a senha
+* pip install flask-login -> Para fazer o sistema de login do site
+* pip install Pillow -> Para reduzir o tamanho da imagem ao editar o perfil
+* pip install gunicorn -> Para colocar o site no ar com o heroku
+* pip install requests -> Para uso da API da steam
+* pip install pandas -> Para uso da API da steam

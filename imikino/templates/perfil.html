@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+        <div class="div-main">
+            <div class="div-sub-main">
+                <a class="d-flex justify-content-lg-end m-2" href="{{ url_for('editar_perfil') }}"><img class="config" src="../static/images/engrenagem.png"></a>
+                <div class="d-flex justify-content-center">
+                    <div class="contorno">
+                        <img class="imagem-perfil" src="{{ foto_perfil }}">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mt-2">
+                    <h4 class="mb-0 mt-0" style="color: white;">{{ current_user.username }}</h4> 
+                </div>
+                <div class="d-flex justify-content-center mt-2">
+                    <span class="mb-0 mt-0" style="color: white;">{{ current_user.email }}</span>
+                </div>
+                <hr style="color: white;">
+                <div class="d-flex justify-content-center mt-">
+                    <div class="d-flex flex-column align-items-center me-4">
+                        <span class="rating" style="color: white;"><strong>Avaliações</strong></span>
+                        <span class="number3" style="color: white; font-size: 1.1rem;">{{ qntde_avaliacao }}</span>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <span class="rating" style="color: white;"><strong>Favorito</strong></span>
+                        <span class="number3" style="color: white; font-size: 1.1rem;">{{ current_user.jogo_favorito }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% block form_editar_perfil %}
+{% endblock %}
+{% endblock %}

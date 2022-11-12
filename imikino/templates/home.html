@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="faixa-jogos">
+        <div id="jogo1" class="jogo">
+            <div class="cartao">
+                <h5 style="color: white;">2017</h5>
+                <div class="caracteristicas">
+                    <div class="caracteristicasCards"><p style="color: white; font-size: small;">Shoot 'em up</p></div>
+                    <div class="caracteristicasCards"><p style="color: white; font-size: small;">Run and gun</p></div>
+                </div>
+                <a href="/jogos/Cuphead" style="text-decoration: none;"><h1 style="color: white; margin-top: 3%; margin-bottom: 3%; font-size: 2rem;">Cuphead</h1></a>
+                <p style="color: white; font-size: 80%;">Cuphead é um jogo eletrônico de run and gun e plataforma criado pelos irmãos canadenses Chad e Jared Moldenhauer através da Studio MDHR.</p>
+            </div>
+        </div>
+        <div id="jogo2" class="jogo">
+            <div class="cartao">
+                <h5 style="color: white;">2012</h5>
+                <div class="caracteristicas">
+                    <div class="caracteristicasCards"><p style="color: white; font-size: small;">RPG</p></div>
+                    <div class="caracteristicasCards"><p style="color: white; font-size: small;">Hack and slash</p></div>
+                </div>
+                <a href="/jogos/Diablo III" style="text-decoration: none;"><h1 style="color: white; margin-top: 3%; margin-bottom: 3%; font-size: 2rem;">Diablo III</h1></a>
+                <p style="color: white; font-size: 80%;">Diablo III é um RPG de ação hack and slash desenvolvido pela Blizzard Entertainment, o terceiro título da série Diablo.</p>
+            </div>
+        </div>
+        <div id="jogo3" class="jogo">
+            <div class="cartao">
+                <h5 style="color: white;">2017</h5>
+                <div class="caracteristicas">
+                    <div class="caracteristicasCards"><p style="color: white; font-size: small;">battle royale</p></div>
+                    <div class="caracteristicasCards"><p style="color: white; font-size: small;">multijogador</p></div>
+                </div>
+                <a href="/jogos/Fortnite" style="text-decoration: none;"><h1 style="color: white; margin-top: 3%; margin-bottom: 3%; font-size: 2rem;">Fortnite</h1></a>
+                <p style="color: white; font-size: 80%;">Fortnite é um jogo eletrônico multijogador online, desenvolvido pela Epic Games e lançado como diferentes modos de jogo que compartilham a mesma jogabilidade e motor gráfico de jogo.</p>
+            </div>
+        </div>
+        <div id="jogo4" class="jogo">
+            <div class="cartao">
+                <h5 style="color: white;">2009</h5>
+                <div class="caracteristicas">
+                    <div class="caracteristicasCards"><p style="color: white; font-size: small;">MOBA</p></div>
+                    <div class="caracteristicasCards"><p style="color: white; font-size: small;">multijogador</p></div>
+                </div>
+                <a href="/jogos/League of Legends" style="text-decoration: none;"><h1 style="color: white; margin-top: 3%; margin-bottom: 3%; font-size: 2rem;">League of Legends</h1></a>
+                <p style="color: white; font-size: 80%;">League of Legends é um jogo eletrônico do gênero multiplayer online battle arena desenvolvido e publicado pela Riot Games.</p>
+            </div>
+        </div>
+        <div id="jogo5" class="jogo">
+            <div class="cartao">
+                <h5 style="color: white;">2016</h5>
+                <div class="caracteristicas">
+                    <div class="caracteristicasCards"><p style="color: white; font-size: small;">FPS</p></div>
+                    <div class="caracteristicasCards"><p style="color: white; font-size: small;">multijogador</p></div>
+                </div>
+                <a href="/jogos/Overwatch" style="text-decoration: none;"><h1 style="color: white; margin-top: 3%; margin-bottom: 3%; font-size: 2rem;">Overwatch</h1></a>
+                <p style="color: white; font-size: 80%;">Overwatch é um jogo eletrônico multijogador de tiro em primeira pessoa desenvolvido e publicado pela Blizzard Entertainment.</p>
+            </div>
+        </div>
+        <div id="jogo6" class="jogo">
+            <div class="cartao">
+                <h5 style="color: white;">2016</h5>
+                <div class="caracteristicas">
+                    <div class="caracteristicasCards"><p style="color: white; font-size: small;">simulação</p></div>
+                    <div class="caracteristicasCards"><p style="color: white; font-size: small;">RPG</p></div>
+                </div>
+                <a href="/jogos/Stardew Valley" style="text-decoration: none;"><h1 style="color: white; margin-top: 3%; margin-bottom: 3%; font-size: 2rem;">Stardew Valley</h1></a>
+                <p style="color: white; font-size: 80%;">Stardew Valley é um jogo de videogame, dos gêneros RPG e simulação, desenvolvido por Eric Barone e publicado pela ConcernedApe e pela Chucklefish.</p>
+            </div>
+        </div>
+    </div>
+    <div class="container1">
+        <div class="favoritos">
+            <legend class="d-flex justify-content-center" style="color: white; font-size: 1.9rem;">Jogos Favoritos</legend>
+            <hr style="color: white;">
+            <div class="lista">
+                {% for favorito in lista_lista_favorito%}
+                    <span style="color: white; font-size: 1.6rem; margin-right: 5%; margin-left: 5%; font-family:Georgia, 'Times New Roman', Times, serif;"><span style="color: rgb(255, 0, 0);">{{ '♥ ' }}</span><span style="color: rgb(40, 31, 41);">{{ '.' }}</span>{{ favorito[1] }}</span>
+                    <span class="link-favorito" style="color: white; font-size: 1.4rem; font-family:Georgia, 'Times New Roman', Times, serif;"><a style="text-decoration: None; color: white;" href="/jogos/{{favorito[0]}}">{{ favorito[0] }}</a></span>
+                    <br><br><br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="melhor-avaliados">
+            <legend class="d-flex justify-content-center" style="color: white; font-size: 1.9rem;">Melhores Jogos</legend>
+            <hr style="color: white;">
+            <div class="lista">
+                {% for jogo in lista_melhor_avaliado %}
+                    <span style="color: white; font-size: 1.6rem; margin-right: 5%; margin-left: 5%; font-family:Georgia, 'Times New Roman', Times, serif;"><span style="color: yellow;">{{ '★ ' }}</span>{{ jogo[1] }}</span>
+                    <span class="link-favorito" style="color: white; font-size: 1.4rem; font-family:Georgia, 'Times New Roman', Times, serif;"><a style="text-decoration: None; color: white;" href="/jogos/{{jogo[0]}}">{{ jogo[0] }}</a></span>
+                    <br><br><br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="mais-populares">
+            <legend class="d-flex justify-content-center" style="color: white; font-size: 1.9rem;">Mais Jogados (Steam)</legend>
+            <hr style="color: white;">
+            <div class="listaL">
+                {% if current_user.is_authenticated %}
+                    {% if request.path == url_for('home') %}
+                        <form method="POST" action='' enctype="multipart/form-data">
+                            {{ form.csrf_token }}
+                            <fieldset class="d-flex justify-content-around flex-column align-items-center container w-auto mt-3 pb-5">
+                                {{ form.id_steam.label(class='form-control-label w-auto', style='color: white; font-size: 1.4rem; font-family:Georgia, "Times New Roman", Times, serif;') }}
+                                {{ form.id_steam(class='form-control w-auto') }}
+                                {{ form.botao_submit_pesquisar(class='btn btn-primary w-50 mt-2') }}
+                            </fieldset>
+                        </form>
+                    {% elif request.path == '/error' %}
+                        <div style="display: flex; flex-direction: column; align-items: center;">
+                            <span class="d-flex justify-content-center" style="color: white; font-size: 1.4rem; font-family:Georgia, 'Times New Roman', Times, serif;">Não foi possível identificar esse<i style="margin-left: 5px;"> steam id</i></span>
+                            <a class="d-flex justify-content-lg-start m-2" href="/"><img class="return" src="../static/images/seta.png"></a>
+                        </div>
+                    {% else %}
+                        <div class="lista">
+                            <br>
+                            {% for jogo, minutos in lista_jogo_horas %}
+                                <span class="d-flex justify-content-center" style="color: white; font-size: 1.4rem; font-family:Georgia, 'Times New Roman', Times, serif;">🏅{{ jogo }}</span>
+                                <span class="d-flex justify-content-center" style="color: white; font-size: 1.6rem; margin-right: 5%; margin-left: 5%; font-family:Georgia, 'Times New Roman', Times, serif;">{{ minutos }} horas</span>
+                                <br><br><br>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <span class="d-flex justify-content-center align-content-center" style="color: white; font-size: 1.4rem; font-family:Georgia, 'Times New Roman', Times, serif;">Faça Login para acessar essa lista</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
