@@ -1,4 +1,4 @@
-﻿# Aplicação web imikino
+﻿# Aplicação web Imikino
 ## Site de avaliação de jogos
 
 ### Bibliotecas que foram usadas:
