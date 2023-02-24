@@ -16,4 +16,3 @@
 * pip install pandas -> Para uso da API da steam
 
 Esta é uma aplicação web chamada Imikino, é um site de avaliação de jogos com sistema de login.
-O deploy não está funcionando 100% como deveria, mas no local não tem nenhum erro.
