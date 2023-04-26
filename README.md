@@ -16,3 +16,10 @@
 * pip install pandas -> Para uso da API da steam
 
 Esta é uma aplicação web chamada Imikino, é um site de avaliação de jogos com sistema de login.
+
+## Instruções para acesso:
+- Após clonar esse repositório instale todas as bibliotecas mencionadas acima e rode o arquivo main.py. Em seguida entre no link que ele forneceu no seu terminal.
+
+## Demonstração do site:
+
+Página inicial:
