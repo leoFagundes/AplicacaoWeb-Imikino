@@ -353,217 +353,51 @@ def editar_perfil():
 @app.route('/jogos')
 @login_required #precisa estar logado para acessar essa página
 def jogos():
-    '''
-    #Apenas para criar os jogos no banco de dados
-    jogo1 = Jogos(id= 1, nome='Cuphead', lancamento='2017', descricao='Cuphead é um jogo eletrônico de run and gun e plataforma criado pelos irmãos canadenses Chad e Jared Moldenhauer através da Studio MDHR', genero='Shoot em up, Run and gun', desenvolvedor='MDHR', foto_jogo='cuphead.jpg')
-    jogo2 = Jogos(id= 2, nome='Diablo III', lancamento='2012', descricao='Diablo III é um RPG de ação hack and slash desenvolvido pela Blizzard Entertainment, o terceiro título da série Diablo', genero='RPG, Hack and slash', desenvolvedor='Blizzard', foto_jogo='diablo.jpg')
-    jogo3 = Jogos(id= 3, nome='Fortnite', lancamento='2017', descricao='Fortnite é um jogo eletrônico multijogador online, desenvolvido pela Epic Games e lançado como diferentes modos de jogo que compartilham a mesma jogabilidade e motor gráfico de jogo', genero='battle royale, multijogador', desenvolvedor='Epic Games', foto_jogo='fortnite.jpg')
-    jogo4 = Jogos(id= 4, nome='League of Legends', lancamento='2009', descricao='League of Legends é um jogo eletrônico do gênero multiplayer online battle arena desenvolvido e publicado pela Riot Games', genero='MOBA, multijogador', desenvolvedor='Riot Games', foto_jogo='lol.jpg')
-    jogo5 = Jogos(id= 5, nome='Overwatch', lancamento='2016', descricao='Overwatch é um jogo eletrônico multijogador de tiro em primeira pessoa desenvolvido e publicado pela Blizzard Entertainment', genero='FPS, multijogador', desenvolvedor='Blizzard', foto_jogo='ow.jpg')
-    jogo6 = Jogos(id= 6, nome='Stardew Valley', lancamento='2016', descricao='Stardew Valley é um jogo de videogame, dos gêneros RPG e simulação, desenvolvido por Eric Barone e publicado pela ConcernedApe e pela Chucklefish', genero='simulação, RPG', desenvolvedor='ConcernedApe', foto_jogo='stardewvalley.jpg')
-    jogo7 = Jogos(id= 7, nome='Counter-Strike: GO', lancamento='2012', descricao='Counter-Strike é uma série de jogos eletrônicos de tiro em primeira pessoa multiplayer, no qual times de terroristas e contra-terroristas batalham entre si', genero='Tiro tático, multiplayer', desenvolvedor='Valve Corporation', foto_jogo='cs_go.png')
-    jogo8 = Jogos(id= 8, nome='World of Warcraft', lancamento='2004', descricao='WOW é um jogo onde você cria e vive com seus personagens em um mundo virtual junto com milhões de outras pessoas. Você pode escolher entre várias raças como humano, elfo, goblin ou até um panda', genero='MMORPG, Fantasia', desenvolvedor='Blizzard Entertainment ', foto_jogo='wow.jpg')
-    jogo9 = Jogos(id= 9, nome='The Witcher 3', lancamento='2015', descricao='The Witcher 3 conta a aventura do bruxo Geralt de Rívia em busca da sua filha, Ciri, enquanto enfrenta inimigos mortais e explora um mundo cheio de possibilidades, desafios e aventuras', genero='Mundo aberto, RPG', desenvolvedor='CD Projekt RED', foto_jogo='the witcher.jpg')
-    jogo10 = Jogos(id= 10, nome='Minecraft', lancamento='2011', descricao='Minecraft é um jogo eletrônico sandbox de sobrevivência criado pelo desenvolvedor sueco Markus "Notch" Persson e posteriormente desenvolvido e publicado pela Mojang Studios', genero='Sandbox, Sobrevivência', desenvolvedor='Mojang Studios', foto_jogo='minecraft.png')
-    jogo11 = Jogos(id= 11, nome='Cities: Skylines', lancamento='2015', descricao='Cities: Skylines é um jogo de construção de cidade singleplayer produzido pela Colossal Order e publicado pela Paradox Interactive.', genero='Simulador, Gerenciamento', desenvolvedor='Colossal Order', foto_jogo='CitiesSkylines.jpg')
-    jogo12 = Jogos(id= 12, nome='Child of Light', lancamento='2014', descricao='Child of Light é um jogo de RPG de plataforma desenvolvido pela Ubisoft Montreal.', genero='RPG, Plataforma', desenvolvedor='Ubisoft', foto_jogo='child_of_light.jpg')
-    jogo13 = Jogos(id= 13, nome='Doki Doki Literature Club!', lancamento='2017', descricao='Doki Doki Literature Club! é um jogo eletrônico de visual novel desenvolvida pela Team Salvato.', genero='Visual Novel, Horror', desenvolvedor='Dan Salvato', foto_jogo='doki-doki.jpg')
-    jogo14 = Jogos(id=14,nome='Persona 5', lancamento='2016', descricao='O jogo é cronologicamente a sexta edição da série Persona, que faz parte principalmente da franquia Megami Tensei.', genero='RPG,Social simulation game', desenvolvedor='Atlus', foto_jogo='persona_5.jpg')
-    jogo15 = Jogos(id=15, nome='Grand Theft Auto V', lancamento='2013', descricao='Grand Theft Auto V é um jogo acompanha a história da campanha um jogador seguindo três criminosos e seus esforços para realizarem assaltos sob a pressão de uma agência governamental.', genero='Tiro, Mundo aberto', desenvolvedor='Rockstar Games', foto_jogo='GTA.jpg')
-    jogo16 = Jogos(id=16, nome='The Legend of Zelda', lancamento='2017', descricao='Viaje pelos vastos campos, florestas e montanhas enquanto descobre o que aconteceu com o reino de Hyrule nesta deslumbrante aventura a céu aberto.', genero='RPG, Mundo aberto', desenvolvedor='Nintendo', foto_jogo='Zelda.jpg')
-    lista_jogos = [jogo1, jogo2, jogo3, jogo4, jogo5, jogo6, jogo7, jogo8, jogo9, jogo10, jogo11, jogo12, jogo13, jogo14, jogo15, jogo16]
+     
+    if not database.session.query(Jogos).filter_by(id=1).first():
+        #Apenas para criar os jogos no banco de dados
+        jogo1 = Jogos(id= 1, nome='Cuphead', lancamento='2017', descricao='Cuphead é um jogo eletrônico de run and gun e plataforma criado pelos irmãos canadenses Chad e Jared Moldenhauer através da Studio MDHR', genero='Shoot em up, Run and gun', desenvolvedor='MDHR', foto_jogo='cuphead.jpg')
+        jogo2 = Jogos(id= 2, nome='Diablo III', lancamento='2012', descricao='Diablo III é um RPG de ação hack and slash desenvolvido pela Blizzard Entertainment, o terceiro título da série Diablo', genero='RPG, Hack and slash', desenvolvedor='Blizzard', foto_jogo='diablo.jpg')
+        jogo3 = Jogos(id= 3, nome='Fortnite', lancamento='2017', descricao='Fortnite é um jogo eletrônico multijogador online, desenvolvido pela Epic Games e lançado como diferentes modos de jogo que compartilham a mesma jogabilidade e motor gráfico de jogo', genero='battle royale, multijogador', desenvolvedor='Epic Games', foto_jogo='fortnite.jpg')
+        jogo4 = Jogos(id= 4, nome='League of Legends', lancamento='2009', descricao='League of Legends é um jogo eletrônico do gênero multiplayer online battle arena desenvolvido e publicado pela Riot Games', genero='MOBA, multijogador', desenvolvedor='Riot Games', foto_jogo='lol.jpg')
+        jogo5 = Jogos(id= 5, nome='Overwatch', lancamento='2016', descricao='Overwatch é um jogo eletrônico multijogador de tiro em primeira pessoa desenvolvido e publicado pela Blizzard Entertainment', genero='FPS, multijogador', desenvolvedor='Blizzard', foto_jogo='ow.jpg')
+        jogo6 = Jogos(id= 6, nome='Stardew Valley', lancamento='2016', descricao='Stardew Valley é um jogo de videogame, dos gêneros RPG e simulação, desenvolvido por Eric Barone e publicado pela ConcernedApe e pela Chucklefish', genero='simulação, RPG', desenvolvedor='ConcernedApe', foto_jogo='stardewvalley.jpg')
+        jogo7 = Jogos(id= 7, nome='Counter-Strike: GO', lancamento='2012', descricao='Counter-Strike é uma série de jogos eletrônicos de tiro em primeira pessoa multiplayer, no qual times de terroristas e contra-terroristas batalham entre si', genero='Tiro tático, multiplayer', desenvolvedor='Valve Corporation', foto_jogo='cs_go.png')
+        jogo8 = Jogos(id= 8, nome='World of Warcraft', lancamento='2004', descricao='WOW é um jogo onde você cria e vive com seus personagens em um mundo virtual junto com milhões de outras pessoas. Você pode escolher entre várias raças como humano, elfo, goblin ou até um panda', genero='MMORPG, Fantasia', desenvolvedor='Blizzard Entertainment ', foto_jogo='wow.jpg')
+        jogo9 = Jogos(id= 9, nome='The Witcher 3', lancamento='2015', descricao='The Witcher 3 conta a aventura do bruxo Geralt de Rívia em busca da sua filha, Ciri, enquanto enfrenta inimigos mortais e explora um mundo cheio de possibilidades, desafios e aventuras', genero='Mundo aberto, RPG', desenvolvedor='CD Projekt RED', foto_jogo='the witcher.jpg')
+        jogo10 = Jogos(id= 10, nome='Minecraft', lancamento='2011', descricao='Minecraft é um jogo eletrônico sandbox de sobrevivência criado pelo desenvolvedor sueco Markus "Notch" Persson e posteriormente desenvolvido e publicado pela Mojang Studios', genero='Sandbox, Sobrevivência', desenvolvedor='Mojang Studios', foto_jogo='minecraft.png')
+        jogo11 = Jogos(id= 11, nome='Cities: Skylines', lancamento='2015', descricao='Cities: Skylines é um jogo de construção de cidade singleplayer produzido pela Colossal Order e publicado pela Paradox Interactive.', genero='Simulador, Gerenciamento', desenvolvedor='Colossal Order', foto_jogo='CitiesSkylines.jpg')
+        jogo12 = Jogos(id= 12, nome='Child of Light', lancamento='2014', descricao='Child of Light é um jogo de RPG de plataforma desenvolvido pela Ubisoft Montreal.', genero='RPG, Plataforma', desenvolvedor='Ubisoft', foto_jogo='child_of_light.jpg')
+        jogo13 = Jogos(id= 13, nome='Doki Doki Literature Club!', lancamento='2017', descricao='Doki Doki Literature Club! é um jogo eletrônico de visual novel desenvolvida pela Team Salvato.', genero='Visual Novel, Horror', desenvolvedor='Dan Salvato', foto_jogo='doki-doki.jpg')
+        jogo14 = Jogos(id=14,nome='Persona 5', lancamento='2016', descricao='O jogo é cronologicamente a sexta edição da série Persona, que faz parte principalmente da franquia Megami Tensei.', genero='RPG,Social simulation game', desenvolvedor='Atlus', foto_jogo='persona_5.jpg')
+        jogo15 = Jogos(id=15, nome='Grand Theft Auto V', lancamento='2013', descricao='Grand Theft Auto V é um jogo acompanha a história da campanha um jogador seguindo três criminosos e seus esforços para realizarem assaltos sob a pressão de uma agência governamental.', genero='Tiro, Mundo aberto', desenvolvedor='Rockstar Games', foto_jogo='GTA.jpg')
+        jogo16 = Jogos(id=16, nome='The Legend of Zelda', lancamento='2017', descricao='Viaje pelos vastos campos, florestas e montanhas enquanto descobre o que aconteceu com o reino de Hyrule nesta deslumbrante aventura a céu aberto.', genero='RPG, Mundo aberto', desenvolvedor='Nintendo', foto_jogo='Zelda.jpg')
+        lista_jogos = [jogo1, jogo2, jogo3, jogo4, jogo5, jogo6, jogo7, jogo8, jogo9, jogo10, jogo11, jogo12, jogo13, jogo14, jogo15, jogo16]
 
-    for jogo in lista_jogos:
-        database.session.add(jogo)
-    database.session.commit()'''
-    
+        for jogo in lista_jogos:
+            database.session.add(jogo)
+        database.session.commit() 
+
     lista_jogos = Jogos.query.all()
-    
-    media1 = 0
+
     for jogo in lista_jogos:
-        lista_aval1 = []
-        lista_aval2 = []
-        lista_aval3 = []
-        lista_aval4 = []
-        lista_aval5 = []
-        lista_aval6 = []
-        lista_aval7 = []
-        lista_aval8 = []
-        lista_aval9 = []
-        lista_aval10 = []
-        lista_aval11 = []
-        lista_aval12 = []
-        lista_aval13 = []
-        lista_aval14 = []
-        lista_aval15 = []
-        lista_aval16 = []
-
-
-        if jogo.id == 1:
-            for aval1 in Avaliacao.query.filter_by(id_jogos=1).all():
-                lista_aval1.append(aval1.avaliacao)
-            if len(lista_aval1) == 0:
-                media1 = None
-            else:
-                media1 = sum(lista_aval1)/len(lista_aval1)
-                media1 = f'{media1:.1f}'
-                jogo.media_jogos = float(media1)
-                database.session.commit()
-        elif jogo.id == 2:
-            for aval1 in Avaliacao.query.filter_by(id_jogos=2).all():
-                lista_aval2.append(aval1.avaliacao)
-            if len(lista_aval2) == 0:
-                media1 = None
-            else:
-                media1 = sum(lista_aval2)/len(lista_aval2)
-                media1 = f'{media1:.1f}'
-                jogo.media_jogos = float(media1)
-                database.session.commit()
-        elif jogo.id == 3:
-            for aval1 in Avaliacao.query.filter_by(id_jogos=3).all():
-                lista_aval3.append(aval1.avaliacao)
-            if len(lista_aval3) == 0:
-                media1 = None
-            else:
-                media1 = sum(lista_aval3)/len(lista_aval3)
-                media1 = f'{media1:.1f}'
-                jogo.media_jogos = float(media1)
-                database.session.commit()
-        elif jogo.id == 4:
-            for aval1 in Avaliacao.query.filter_by(id_jogos=4).all():
-                lista_aval4.append(aval1.avaliacao)
-            if len(lista_aval4) == 0:
-                media1 = None
-            else:
-                media1 = sum(lista_aval4)/len(lista_aval4)
-                media1 = f'{media1:.1f}'
-                jogo.media_jogos = float(media1)
-                database.session.commit()
-        elif jogo.id == 5:
-            for aval1 in Avaliacao.query.filter_by(id_jogos=5).all():
-                lista_aval5.append(aval1.avaliacao)
-            if len(lista_aval5) == 0:
-                media1 = None
-            else:
-                media1 = sum(lista_aval5)/len(lista_aval5)
-                media1 = f'{media1:.1f}'
-                jogo.media_jogos = float(media1)
-                database.session.commit()
-        elif jogo.id == 6:
-            for aval1 in Avaliacao.query.filter_by(id_jogos=6).all():
-                lista_aval6.append(aval1.avaliacao)
-            if len(lista_aval6) == 0:
-                media1 = None
-            else:
-                media1 = sum(lista_aval6)/len(lista_aval6)
-                media1 = f'{media1:.1f}'
-                jogo.media_jogos = float(media1)
-                database.session.commit()
-        elif jogo.id == 7:
-            for aval1 in Avaliacao.query.filter_by(id_jogos=7).all():
-                lista_aval7.append(aval1.avaliacao)
-            if len(lista_aval7) == 0:
-                media1 = None
-            else:
-                media1 = sum(lista_aval7)/len(lista_aval7)
-                media1 = f'{media1:.1f}'
-                jogo.media_jogos = float(media1)
-                database.session.commit()
-        elif jogo.id == 8:
-            for aval1 in Avaliacao.query.filter_by(id_jogos=8).all():
-                lista_aval8.append(aval1.avaliacao)
-            if len(lista_aval8) == 0:
-                media1 = None
-            else:
-                media1 = sum(lista_aval8)/len(lista_aval8)
-                media1 = f'{media1:.1f}'
-                jogo.media_jogos = float(media1)
-                database.session.commit()
-        elif jogo.id == 9:
-            for aval1 in Avaliacao.query.filter_by(id_jogos=9).all():
-                lista_aval9.append(aval1.avaliacao)
-            if len(lista_aval9) == 0:
-                media1 = None
-            else:
-                media1 = sum(lista_aval9)/len(lista_aval9)
-                media1 = f'{media1:.1f}'
-                jogo.media_jogos = float(media1)
-                database.session.commit()
-        elif jogo.id == 10:
-            for aval1 in Avaliacao.query.filter_by(id_jogos=10).all():
-                lista_aval10.append(aval1.avaliacao)
-            if len(lista_aval10) == 0:
-                media1 = None
-            else:
-                media1 = sum(lista_aval10)/len(lista_aval10)
-                media1 = f'{media1:.1f}'
-                jogo.media_jogos = float(media1)
-                database.session.commit()
-        elif jogo.id == 11:
-            for aval1 in Avaliacao.query.filter_by(id_jogos=11).all():
-                lista_aval11.append(aval1.avaliacao)
-            if len(lista_aval11) == 0:
-                media1 = None
-            else:
-                media1 = sum(lista_aval11)/len(lista_aval11)
-                media1 = f'{media1:.1f}'
-                jogo.media_jogos = float(media1)
-                database.session.commit()
-        elif jogo.id == 12:
-            for aval1 in Avaliacao.query.filter_by(id_jogos=12).all():
-                lista_aval12.append(aval1.avaliacao)
-            if len(lista_aval12) == 0:
-                media1 = None
-            else:
-                media1 = sum(lista_aval12)/len(lista_aval12)
-                media1 = f'{media1:.1f}'
-                jogo.media_jogos = float(media1)
-                database.session.commit()
-        elif jogo.id == 13:
-            for aval1 in Avaliacao.query.filter_by(id_jogos=13).all():
-                lista_aval13.append(aval1.avaliacao)
-            if len(lista_aval13) == 0:
-                media1 = None
-            else:
-                media1 = sum(lista_aval13)/len(lista_aval13)
-                media1 = f'{media1:.1f}'
-                jogo.media_jogos = float(media1)
-                database.session.commit()
-        elif jogo.id == 14:
-            for aval1 in Avaliacao.query.filter_by(id_jogos=14).all():
-                lista_aval14.append(aval1.avaliacao)
-            if len(lista_aval14) == 0:
-                media1 = None
-            else:
-                media1 = sum(lista_aval14)/len(lista_aval14)
-                media1 = f'{media1:.1f}'
-                jogo.media_jogos = float(media1)
-                database.session.commit()
-        elif jogo.id == 15:
-            for aval1 in Avaliacao.query.filter_by(id_jogos=15).all():
-                lista_aval15.append(aval1.avaliacao)
-            if len(lista_aval15) == 0:
-                media1 = None
-            else:
-                media1 = sum(lista_aval15)/len(lista_aval15)
-                media1 = f'{media1:.1f}'
-                jogo.media_jogos = float(media1)
-                database.session.commit()
-        elif jogo.id == 16:
-            for aval1 in Avaliacao.query.filter_by(id_jogos=16).all():
-                lista_aval16.append(aval1.avaliacao)
-            if len(lista_aval6) == 0:
-                media1 = None
-            else:
-                media1 = sum(lista_aval16)/len(lista_aval16)
-                media1 = f'{media1:.1f}'
-                jogo.media_jogos = float(media1)
-                database.session.commit()
+        lista_aval = []  # cria uma lista vazia para as avaliações de cada jogo
+        for i in range(1, 17):  # itera sobre os ids dos jogos
+            if jogo.id == i:
+                for aval in Avaliacao.query.filter_by(id_jogos=i).all():
+                    lista_aval.append(aval.avaliacao)
+                if len(lista_aval) == 0:
+                    media = None
+                else:
+                    media = sum(lista_aval)/len(lista_aval)
+                    media = f'{media:.1f}'
+                    jogo.media_jogos = float(media)
+                    database.session.commit()
 
 
     if current_user.is_authenticated:
         foto_perfil = url_for('static', filename='foto_perfil/{}'.format(current_user.foto_perfil))
-        return render_template('jogos.html', foto_perfil=foto_perfil, lista_jogos=lista_jogos, media1=media1)
+        return render_template('jogos.html', foto_perfil=foto_perfil, lista_jogos=lista_jogos, media1=media)
 
 
 @app.route('/jogos/<nome>', methods=['GET', 'POST'])
@@ -577,54 +411,10 @@ def avaliar(nome):
             jogo = jogos
 
     lista_aval = []
-    if jogo.id == 1:
-        for aval1 in Avaliacao.query.filter_by(id_jogos=1).all():
-            lista_aval.append(aval1.avaliacao)
-    elif jogo.id == 2:
-        for aval1 in Avaliacao.query.filter_by(id_jogos=2).all():
-            lista_aval.append(aval1.avaliacao)
-    elif jogo.id == 3:
-        for aval1 in Avaliacao.query.filter_by(id_jogos=3).all():
-            lista_aval.append(aval1.avaliacao)
-    elif jogo.id == 4:
-        for aval1 in Avaliacao.query.filter_by(id_jogos=4).all():
-            lista_aval.append(aval1.avaliacao)
-    elif jogo.id == 5:
-        for aval1 in Avaliacao.query.filter_by(id_jogos=5).all():
-            lista_aval.append(aval1.avaliacao)
-    elif jogo.id == 6:
-        for aval1 in Avaliacao.query.filter_by(id_jogos=6).all():
-            lista_aval.append(aval1.avaliacao)
-    elif jogo.id == 7:
-        for aval1 in Avaliacao.query.filter_by(id_jogos=7).all():
-            lista_aval.append(aval1.avaliacao)
-    elif jogo.id == 8:
-        for aval1 in Avaliacao.query.filter_by(id_jogos=8).all():
-            lista_aval.append(aval1.avaliacao)
-    elif jogo.id == 9:
-        for aval1 in Avaliacao.query.filter_by(id_jogos=9).all():
-            lista_aval.append(aval1.avaliacao)
-    elif jogo.id == 10:
-        for aval1 in Avaliacao.query.filter_by(id_jogos=10).all():
-            lista_aval.append(aval1.avaliacao)
-    elif jogo.id == 11:
-        for aval1 in Avaliacao.query.filter_by(id_jogos=11).all():
-            lista_aval.append(aval1.avaliacao)
-    elif jogo.id == 12:
-        for aval1 in Avaliacao.query.filter_by(id_jogos=12).all():
-            lista_aval.append(aval1.avaliacao)
-    elif jogo.id == 13:
-        for aval1 in Avaliacao.query.filter_by(id_jogos=13).all():
-            lista_aval.append(aval1.avaliacao)
-    elif jogo.id == 14:
-        for aval1 in Avaliacao.query.filter_by(id_jogos=14).all():
-            lista_aval.append(aval1.avaliacao)
-    elif jogo.id == 15:
-        for aval1 in Avaliacao.query.filter_by(id_jogos=15).all():
-            lista_aval.append(aval1.avaliacao)
-    elif jogo.id == 16:
-        for aval1 in Avaliacao.query.filter_by(id_jogos=16).all():
-            lista_aval.append(aval1.avaliacao)
+    for id_jogo in range(1, 17):
+        if jogo.id == id_jogo:
+            for aval1 in Avaliacao.query.filter_by(id_jogos=id_jogo).all():
+                lista_aval.append(aval1.avaliacao)
 
     if len(lista_aval) == 0:
         media = None
