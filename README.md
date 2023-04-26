@@ -22,4 +22,5 @@ Esta é uma aplicação web chamada Imikino, é um site de avaliação de jogos 
 
 ## Demonstração do site:
 
-Página inicial:
+<p align='center'>Página inicial:</p>
+![Imagem Home](https://github.com/leoFagundes/AplicacaoWeb-Imikino/blob/main/imikino/static/images/imgREADME/1-home.png)
