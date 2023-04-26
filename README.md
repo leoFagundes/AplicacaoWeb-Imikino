@@ -14,9 +14,9 @@ Foi um projeto bem interessante e aprendi muito na execução dele.
 * pip install flask-bcrypt -> Para criptografar a senha
 * pip install flask-login -> Para fazer o sistema de login do site
 * pip install Pillow -> Para reduzir o tamanho da imagem ao editar o perfil
-* pip install gunicorn -> Para colocar o site no ar com o heroku
 * pip install requests -> Para uso da API da steam
 * pip install pandas -> Para uso da API da steam
+* pip install gunicorn -> Para colocar o site no ar com o heroku (não é preciso baixar)
 
 ## Instruções para acesso:
 - Após clonar esse repositório instale todas as bibliotecas mencionadas acima e rode o arquivo main.py. Em seguida entre no link que ele forneceu no seu terminal.
